@@ -12,6 +12,7 @@ import datetime
 import fitz
 import contextlib
 import base64
+from math import ceil
 
 # CHANGE FOR CLOUD DEPLOY!!!!
 pytesseract.pytesseract.tesseract_cmd = None
