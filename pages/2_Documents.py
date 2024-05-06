@@ -358,21 +358,42 @@ if st.session_state.logged_in:
             uploaded_file = None  # Clear the uploaded file after handling
             st.experimental_rerun()
 
-    if files:
-        st.write(f'All files are:')
-        for file in files:
-            display_file_with_thumbnail(file)
-            if st.button("Delete", key=f"delete_{file['url']}"):
-                delete_file(username, file['doc_id'])  # Function to delete the file
-            file_extension = file['filename'].split(".")[-1].lower()
-            if file_extension in ["jpg", "jpeg", "png"]:
-                image_bytes = get_img_blob(file)
-                send_image_to_openai(image_bytes, api_key, key=f"chat_{file['url']}")
-            elif file_extension == "pdf":
-                pdf_bytes = get_img_blob(file)
-                if st.button("Chat to AI", key=f"chat_{file['url']}"):
-                    pdf_parse_content(pdf_bytes)
-                if st.button("Get Summary", key=f"chat_summary_{file['url']}"):
-                    get_summary(pdf_bytes, file['filename'])
+    controls = st.columns(3)
+    with controls[0]:
+        batch_size = st.select_slider("Batch size:", range(10, 110, 10))
+    with controls[1]:
+        row_size = st.select_slider("Row size:", range(1, 6), value=5)
+    num_batches = ceil(len(files) / batch_size)
+    with controls[2]:
+        page = st.selectbox("Page", range(1, num_batches + 1))
+
+    batch = files[(page - 1) * batch_size: page * batch_size]
+
+    grid = st.columns(row_size)
+    col = 0
+
+    max_heights = [0] * row_size
+
+    for file in batch:
+        with grid[col]:
+            with st.container(height=550):
+                if st.button("🗑️", key=f"delete_{file['url']}", type="secondary"):
+                    delete_file(username, file['doc_id'])  # Function to delete the file
+                # Row for the image
+                image_row = st.empty()
+
+                # Display the image in the image row
+                image_row.image(file['thumbnail_url'], caption=file['filename'])
+                file_extension = file['filename'].split(".")[-1].lower()
+                if file_extension in ["jpg", "jpeg", "png"]:
+                    image_bytes = get_img_blob(file)
+                    send_image_to_openai(image_bytes, api_key, key=f"chat_{file['url']}")
+                elif file_extension == "pdf":
+                    pdf_bytes = get_img_blob(file)
+                    if st.button("Chat to AI", key=f"chat_{file['url']}"):
+                        pdf_parse_content(pdf_bytes)
+                    if st.button("Get Summary", key=f"chat_summary_{file['url']}"):
+                        get_summary(pdf_bytes, file['filename'])
+        col = (col + 1) % row_size
 else:
     st.write('Register please.')
