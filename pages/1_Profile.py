@@ -21,7 +21,8 @@ def initialize_firebase_app():
             "auth_uri": secrets["auth_uri"],
             "token_uri": secrets["token_uri"],
             "auth_provider_x509_cert_url": secrets["auth_provider_x509_cert_url"],
-            "client_x509_cert_url": secrets["client_x509_cert_url"]
+            "client_x509_cert_url": secrets["client_x509_cert_url"],
+            "universe_domain": secrets["googleapis.com"]
         })
 
         # Initialize the Firebase app with the created credential
