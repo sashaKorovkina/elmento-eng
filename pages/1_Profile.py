@@ -87,7 +87,7 @@ if not st.session_state['signedout']:
 
         username = st.text_input('Please enter your unqiue username.')
 
-        if st.button('Создать мой аккаунт'):
+        if st.button('Create an account'):
             user = auth.create_user(email=email, password=password)
 
             doc_ref = db.collection('users').document(user.uid)
@@ -97,7 +97,7 @@ if not st.session_state['signedout']:
             })
 
             st.success('Account successfully created!')
-            st.markdown('Пожалуйста, войдите в систему, используя вашу электронную почту и пароль.')
+            st.markdown('Please login or register to view this page.')
             st.balloons()
 
 if 'logged_in' in st.session_state and st.session_state.logged_in:
