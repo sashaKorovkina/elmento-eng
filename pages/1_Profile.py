@@ -34,7 +34,7 @@ def initialize_firebase_app():
 # Call the function to initialize the app
 initialize_firebase_app()
 
-st.title('Hi there, I''m :blue[Elmento AI]!')
+st.title('Hi there, I am :blue[Elmento AI]!')
 
 if 'username' not in st.session_state:
     st.session_state.username = ''
