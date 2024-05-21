@@ -21,13 +21,13 @@ def initialize_firebase_app():
             "auth_uri": secrets["auth_uri"],
             "token_uri": secrets["token_uri"],
             "auth_provider_x509_cert_url": secrets["auth_provider_x509_cert_url"],
-            "client_x509_cert_url": secrets["client_x509_cert_url"]
+            "client_x509_cert_url": secrets["client_x509_cert_url"],
         })
 
         # Initialize the Firebase app with the created credential
         firebase_admin.initialize_app(cred,
                                       {
-                                          'storageBucket': 'gs://elmeto-12de0.appspot.com'
+                                          'storageBucket': 'gs://elmento-eng.appspot.com'
                                       }
                                       )
 
