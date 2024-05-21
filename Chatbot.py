@@ -20,18 +20,18 @@ Beta-версия Elmento AI уже предлагает вам множеств
 st.title("Часто задаваемые вопросы (FAQ):")
 
 st.markdown("""
-1. **Как пользоваться нейросетью?**
-   1) Зайдите в раздел “Мой профиль” и создайте там учетную запись. Войдите в нее.
-   2) Для того чтобы нейросеть работала, вам необходимо внести API ключ, которЫЙ находится на видном месте каждой страницы.
-   3) Вы можете загрузить документы в разделе "Файлы".
-   4) В разделе “Файлы”, вы можете выбрать документ для обработки. Вы можете нажать на кнопку “Получить сводку”, чтобы получить краткое содержание документа или “Общение с ИИ”, чтобы самостоятельно задать вопрос по файлу.
+1. **How to use the neural network?**
+   1) Go to the "My Profile" section and create an account there. Log in to it.
+   2) For the neural network to work, you need to enter the API key, which is prominently displayed on each page.
+   3) You can upload documents in the "Files" section.
+   4) In the "Files" section, you can select a document for processing. You can click the "Get Summary" button to get a summary of the document or "Interact with AI" to ask a question about the file.
 
-2. **Когда проект выйдет полностью?**
-   Сейчас Elemento AI находится в стадии разработки и тестирования. Мы полагаем, что сможем закончить основную часть работ в течение нескольких месяцев.
+2. **When will the full version be released?**
+   Elmento AI is currently in the development and testing phase. We expect to complete the main part of the work within a few months.
 
-3. **Какие предусмотрены тарифы?**
-   На данный момент никаких тарифов не предусмотрено. В первый месяц нейросеть доступна бесплатно.
+3. **What are the planned pricing options?**
+   Currently, there are no pricing plans. The neural network is available for free during the first month.
 
-4. **Я нашел баг/ошибку. Куда обращаться?**
-    ...к нашему сотруднику @andreyelmento в Телеграм.
+4. **I found a bug/error. Where should I report it?**
+    ...chat to me - sasha.korovkina2003@gmail.com.
 """)
