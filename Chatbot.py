@@ -2,22 +2,21 @@ from openai import OpenAI
 import streamlit as st
 
 # Display FAQs
-st.title("Вас приветствует команда Elmento AI!")
+st.title("Greetings from the Elmento AI team!")
 
 st.markdown("""
-Elmento AI - это российская нейросеть, которая анализирует объёмные файлы в любом расширении: от pdf и word до png и pptx. 
+Elmento AI is a Russian neural network that analyzes large files in any format, from PDF and Word to PNG and PPTX.
 
-С помощью технологии OCR (компьютерного зрения), нейросеть может читать сканы и фотографии. 
+Using OCR (Optical Character Recognition) technology, the neural network can read scans and photos.
 
-В её функционал также входит создание краткого содержания (сводки) к документам, доступ к модели ChatGPT , ответы на вопросы по любому загруженному файлу и работа с информацией из её собственной базы данных. 
+Its functionality also includes creating summaries for documents, accessing the ChatGPT model, answering questions about any uploaded file, and working with information from its own database.
 
-Beta-версия Elmento AI уже предлагает вам множество преимуществ перед другими нейросетями, а мы стараемся делать её лучше. 
+The beta version of Elmento AI already offers you many advantages over other neural networks, and we are striving to make it even better.
 
-Благодарим вас за интерес к Elmento и желаем удачи с вашими задачами!
-
+Thank you for your interest in Elmento, and we wish you success with your tasks!
 """)
 
-st.title("Часто задаваемые вопросы (FAQ):")
+st.title("Frequently Asked Questions (FAQ):")
 
 st.markdown("""
 1. **How to use the neural network?**
