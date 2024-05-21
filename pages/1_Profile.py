@@ -34,7 +34,7 @@ def initialize_firebase_app():
 # Call the function to initialize the app
 initialize_firebase_app()
 
-st.title(':blue[Elmento AI] приветствует вас!')
+st.title('Hi there, I''m :blue[Elmento AI]!')
 
 if 'username' not in st.session_state:
     st.session_state.username = ''
@@ -47,7 +47,7 @@ def f():
         user = auth.get_user_by_email(email)
         print(user.uid)
 
-        st.success('Вход выполнен успешно!')
+        st.success('Successfully logged in!')
 
         st.session_state.username = user.uid
         st.session_state.useremail = user.email
@@ -56,7 +56,7 @@ def f():
         st.session_state.signedout = True
         st.session_state['logged_in'] = True
     except:
-        st.warning('Ошибка входа')
+        st.warning('Log in error')
 
 # sign out function
 def t():
@@ -74,18 +74,18 @@ if not st.session_state['signedout']:
     st.session_state.db = db
     docs = db.collection('users').get()
 
-    choice = st.selectbox('Вход/Регистрация', ['Вход', 'Регистрация'])
+    choice = st.selectbox('Login/Register', ['Login', 'Register'])
 
-    if choice == 'Вход':
-        email = st.text_input('Адрес электронной почты')
-        password = st.text_input('Пароль', type='password')
-        st.button('Вход', on_click=f)
+    if choice == 'Login':
+        email = st.text_input('Email')
+        password = st.text_input('Password', type='password')
+        st.button('Login', on_click=f)
 
     else:
-        email = st.text_input('Адрес электронной почты')
-        password = st.text_input('Пароль', type='password')
+        email = st.text_input('Email')
+        password = st.text_input('Password', type='password')
 
-        username = st.text_input('Введите ваше уникальное имя пользователя.')
+        username = st.text_input('Please enter your unqiue username.')
 
         if st.button('Создать мой аккаунт'):
             user = auth.create_user(email=email, password=password)
