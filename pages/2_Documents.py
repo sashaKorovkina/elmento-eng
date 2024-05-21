@@ -103,7 +103,7 @@ def send_text_to_openai(text_content, file_id):
               "messages": [
                 {
                     "role": "user",
-                    "content": f"Having the output only in grammatically correct Russian language, summarise this text for me: ... {text_content}"
+                    "content": f"Having the output only in grammatically correct English language, summarise this text for me: ... {text_content}"
                 }
               ],
               "max_tokens": 1000
@@ -137,9 +137,9 @@ def get_summary(pdf_bytes, file_name, language, file_id):
         pdf_image = Image.open(io.BytesIO(image_data))
         pdf_images.append(pdf_image)
 
-        if language == 'Русский':
+        if language == 'Russian':
             lang = 'rus'
-        elif language == 'Английский':
+        elif language == 'English':
             lang = 'eng'
 
         text = pytesseract.image_to_string(pdf_image, lang= lang)
@@ -474,7 +474,7 @@ def make_tempdir():
 #             if itemTime < deleteTime:
 #                 shutil.rmtree(subdir)
 
-st.title("Мои документы")
+st.title("My Files")
 
 if st.session_state.logged_in:
     api_key = st.text_input("Enter your OpenAI API Key")
@@ -490,10 +490,10 @@ if st.session_state.logged_in:
 
     with st.form("my-form", clear_on_submit=True):
         uploaded_file = st.file_uploader("")
-        submitted = st.form_submit_button("Добавить в галерею")
+        submitted = st.form_submit_button("Add to gallery")
 
         if submitted and not uploaded_file:
-            st.error("Пожалуйста, загрузите файл перед нажатием кнопки 'Загрузите ваши файлы'")
+            st.error("Please upload a file before clicking the 'Upload your files' button.")
         elif uploaded_file and uploaded_file.name not in existing_file_names:
             file = upload_single_file(uploaded_file, tmpdirname)
             uploaded_file = None  # Clear the uploaded file after handling
