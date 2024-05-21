@@ -96,7 +96,7 @@ if not st.session_state['signedout']:
                 'email': email,
             })
 
-            st.success('Аккаунт успешно создан!')
+            st.success('Account successfully created!')
             st.markdown('Пожалуйста, войдите в систему, используя вашу электронную почту и пароль.')
             st.balloons()
 
