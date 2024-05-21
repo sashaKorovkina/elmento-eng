@@ -59,7 +59,7 @@ def display_messages(chat_id, username):
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
-st.title("Чат с Elmento")
+st.title("Chat With Elmento")
 
 # MAIN SCRIPT
 if 'logged_in' in st.session_state and st.session_state.logged_in:
@@ -77,7 +77,7 @@ if 'logged_in' in st.session_state and st.session_state.logged_in:
             # st.sidebar.button
             # selected_chat_name = st.sidebar.selectbox("Выберите чат:", chat_names)
             # Custom CSS to style the expander as buttons
-            with st.sidebar.expander("Выберите чат:", expanded=True):
+            with st.sidebar.expander("Choose a chat:", expanded=True):
                 for chat_name in chat_names:
                     if st.button(chat_name, use_container_width=True):
                         st.session_state.selected_chat_name = chat_name
@@ -90,11 +90,11 @@ if 'logged_in' in st.session_state and st.session_state.logged_in:
                 selected_chat_data = next((chat for chat in chats_all if chat['filename'] == selected_chat_name), None)
 
                 if selected_chat_data:
-                    st.write(f"Начало чат-сессии для: {selected_chat_data['filename']}")
+                    st.write(f"Starting chat session for: {selected_chat_data['filename']}")
                     # st.write(f"The id in the selected file is: {selected_chat_data['chat_id']}")
                     display_messages(selected_chat_data['chat_id'], username)
 
-                    with st.sidebar.expander("Выберите тип вопроса:", expanded=True):
+                    with st.sidebar.expander("Choose question type:", expanded=True):
                         question_types = [
                             "Структура научной статьи по ГОСТ",
                             "Структура курсовой работы по ГОСТ",
@@ -367,5 +367,5 @@ if 'logged_in' in st.session_state and st.session_state.logged_in:
                             'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat()
                         })
 else:
-    st.write('Пожалуйста, войдите в систему или зарегистрируйтесь, чтобы просмотреть эту страницу.')
+    st.write('Please login or register to view this page')
 
